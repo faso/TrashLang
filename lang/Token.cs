@@ -4,49 +4,72 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lang.TokenTypes
-{
-    public static class Tokens
+namespace lang.Lexing
+{ 
+    public enum TokenType
     {
         // Special
-        public static TokenType ILLEGAL = new TokenType("ILLEGAL");
-        public static TokenType EOF = new TokenType("EOF");
+        ILLEGAL,
+        EOF,
 
         // Identifiers and literals
-        public static TokenType IDENT = new TokenType("IDENT");
-        public static TokenType INT = new TokenType("INT");
+        IDENT,
+        INT,
 
         // Operators
-        public static TokenType ASSIGN = new TokenType("=");
-        public static TokenType PLUS = new TokenType("+");
+        ASSIGN,
+        PLUS,
+        MINUS,
+        SLASH,
+        ASTERISK,
+        LESSTHAN,
+
+        // Comparers
+        GREATERTHAN,
+        BANG,
+        EQ,
+        NOT_EQ,
 
         // Delimiters
-        public static TokenType COMMA = new TokenType(",");
-        public static TokenType SEMICOLON = new TokenType(";");
+        COMMA,
+        SEMICOLON,
 
-        public static TokenType LPAREN = new TokenType("(");
-        public static TokenType RPAREN = new TokenType(")");
-        public static TokenType LBRACE = new TokenType("{");
-        public static TokenType RBRACE = new TokenType("}");
+        LPAREN,
+        RPAREN,
+        LBRACE,
+        RBRACE,
 
         // Keywords
-        public static TokenType FUNCTION = new TokenType("FUNCTION");
-        public static TokenType VAR = new TokenType("VAR");
-    }
-
-    public class TokenType
-    {
-        public string Value { get; set; }
-
-        public TokenType(string value)
-        {
-            this.Value = value;
-        }
+        FUNCTION,
+        VAR,
+        TRUE,
+        FALSE,
+        IF,
+        ELSE,
+        RETURN
     }
 
     public class Token
     {
         public TokenType Type { get; set; }
         public string Literal { get; set; }
+
+        public Token(TokenType type, string literal)
+        {
+            this.Type = type;
+            this.Literal = literal;
+        }
+
+        public Token(TokenType type, char literal)
+        {
+            this.Type = type;
+            this.Literal = literal.ToString();
+        }
+
+        public Token()
+        {
+            this.Type = 0;
+            this.Literal = String.Empty;
+        }
     }
 }
