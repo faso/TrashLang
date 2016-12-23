@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,8 @@ namespace lang.Lexing
             { "false", TokenType.FALSE },
             { "if", TokenType.IF },
             { "else", TokenType.ELSE },
-            { "return", TokenType.RETURN }
+            { "return", TokenType.RETURN },
+            { "while", TokenType.WHILE },
         };
 
         private TokenType LookupIdentifier(string ident)
@@ -85,7 +86,7 @@ namespace lang.Lexing
                 return input[readPosition];
         }
 
-        private Token NextToken()
+        public Token NextToken()
         {
             Token tok = new Token();
 
