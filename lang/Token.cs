@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,7 +46,10 @@ namespace lang.Lexing
         FALSE,
         IF,
         ELSE,
-        RETURN
+        RETURN,
+
+        // Loops
+        WHILE
     }
 
     public class Token
