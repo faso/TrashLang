@@ -35,7 +35,17 @@ namespace Lang.REPL
                 //    Console.WriteLine($"{Enum.GetName(typeof(TokenType), tok.Type).PadRight(12)}{tok.Literal}");
                 //}
 
-                var AST = new Parser(lexer).ParseProgram();
+                var AST = new Parser(lexer);
+                var res = AST.ParseProgram();
+                if (AST.Errors.Count > 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Fucking up there, buddy! Parser errors: ");
+                    foreach (var e in AST.Errors)
+                        Console.WriteLine($"\t{e}\n");
+                }
+                else
+                    Console.WriteLine(AST.ToString());
                 Console.WriteLine();
             }
         }

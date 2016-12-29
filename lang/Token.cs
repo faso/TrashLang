@@ -22,9 +22,9 @@ namespace lang.Lexing
         MINUS,
         SLASH,
         ASTERISK,
-        LESSTHAN,
 
         // Comparers
+        LESSTHAN,
         GREATERTHAN,
         BANG,
         EQ,
